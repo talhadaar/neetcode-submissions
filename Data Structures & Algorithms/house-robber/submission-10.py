@@ -1,0 +1,14 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        # DP1:
+        # We only concern ourselves with max score at i+1 or i+2
+
+        # rob1: best result upto previous house
+        # rob2: best result upto house before
+        rob1, rob2 = 0,0
+
+        for num in nums:
+            temp = max(rob2, num + rob1)
+            rob1 = rob2
+            rob2 = temp
+        return rob2
